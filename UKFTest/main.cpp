@@ -13,7 +13,7 @@
 #include <kalman/UnscentedKalmanFilter.hpp>
 
 #include <iostream>
-#
+#include <fstream>
 #include <random>
 #include <chrono>
 
@@ -73,6 +73,7 @@ int main()
     // Standard-Deviation of noise added to all measurement vector components in distance measurements
     T distanceNoise = 0.25;
     
+	std::ofstream f("./data.csv");
     // Simulate for 100 steps
     const size_t N = 100;
 
@@ -133,6 +134,6 @@ int main()
                     << x_ukf.x() << "," << x_ukf.y() << "," << x_ukf.theta()
                     << std::endl;
     }
-    
+	f.close();
     return 0;
 }
